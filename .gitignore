@@ -1,2 +1,6 @@
-*.csv
+Booking.csv
+CuisineTypes.csv
+Recommendations.csv
+Restaurant.csv
+ResaurantCuisineTypes.csv
 *.DS_Store

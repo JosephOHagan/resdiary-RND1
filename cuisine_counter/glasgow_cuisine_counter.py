@@ -21,13 +21,19 @@ def main():
         for row in reader:
             cuisineDict[int(row[1])] += 1
 
-    sortedOccurences = sorted(cuisineDict.values(), reverse=True)
+    sortedOccurrences = sorted(cuisineDict.values(), reverse=True)
     sortedTypes = sorted(cuisineDict, key=cuisineDict.get, reverse=True)
 
     i = 0
 
-    for cuisine in sortedTypes:
-        print restaurantDict[cuisine] + " has " + str(sortedOccurences[i]) + " occurences."
-        i += 1
+    with open( 'results.csv', 'w' ) as csvfile:
+	fieldnames = ['Cuisine', 'Occurrences']
+	writer = csv.DictWriter( csvfile, fieldnames=fieldnames )
+
+	writer.writeheader()
+	for cuisine in sortedTypes:
+		writer.writerow( {'Cuisine': restaurantDict[cuisine], 'Occurrences': sortedOccurrences[i]} )
+		i += 1
+
 if __name__=="__main__":
     main()
