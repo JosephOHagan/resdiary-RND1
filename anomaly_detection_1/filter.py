@@ -42,9 +42,10 @@ with open('../data/Repeat diners in Glasgow, Oct 2016 - Sheet1.csv', 'rb') as fi
         filtered = [frequencies[i][0] for i in range(len(frequencies))
                     if prediction[i] == 1]
         plt.boxplot([frequencies, filtered],
-                    labels=['original ({:d})'.format(len(frequencies)),
-                            'filtered ({:d})'.format(len(filtered))])
+                    labels=['Original set ({:d})'.format(len(frequencies)),
+                            'Filtered set ({:d})'.format(len(filtered))])
         plt.title('Outlier Detection ({:.3f}%)'.format(
                 100.0 * (len(frequencies) - len(filtered)) / len(frequencies)))
-        plt.ylabel('frequency')
+        plt.ylabel('Frequency of Bookings per Second (s)')
+	plt.xlabel('Number of users')
         plt.show()
